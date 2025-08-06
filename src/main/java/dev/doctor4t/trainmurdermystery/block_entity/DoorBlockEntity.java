@@ -1,0 +1,102 @@
+package dev.doctor4t.trainmurdermystery.block_entity;
+
+import dev.doctor4t.trainmurdermystery.index.sound.TrainMurderMysterySounds;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.AnimationState;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+
+public abstract class DoorBlockEntity extends SyncingBlockEntity {
+
+    public AnimationState state = new AnimationState();
+    protected long lastUpdate = 0L;
+    protected boolean open;
+    protected int age = 0;
+
+    public DoorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
+        this.open = state.get(Properties.OPEN);
+        this.state.start(this.age);
+        this.state.skip(10, 1);
+    }
+
+    public static <T extends DoorBlockEntity> void clientTick(World world, BlockPos pos, BlockState state, T entity) {
+        entity.age++;
+    }
+
+    public void toggle(boolean silent) {
+        if (this.world == null || this.world.getTime() == this.lastUpdate) {
+            return;
+        }
+        this.toggleOpen();
+        if (!silent) {
+            this.playToggleSound();
+        }
+        this.toggleBlocks();
+    }
+
+    protected void toggleOpen() {
+        if (this.world != null) {
+            this.lastUpdate = this.world.getTime();
+            this.open = !this.open;
+            this.world.addSyncedBlockEvent(this.pos, this.getCachedState().getBlock(), 1, this.open ? 1 : 0);
+        }
+    }
+
+    protected void playToggleSound() {
+        if (this.world == null) {
+            return;
+        }
+        this.world.playSound(null, this.pos, TrainMurderMysterySounds.BLOCK_DOOR_TOGGLE, SoundCategory.BLOCKS, 1f, 1f);
+    }
+
+    protected abstract void toggleBlocks();
+
+    public boolean isOpen() {
+        return this.open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public float getYaw() {
+        return 180 - this.getFacing().asRotation();
+    }
+
+    public Direction getFacing() {
+        return this.getCachedState().get(Properties.HORIZONTAL_FACING);
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    @Override
+    public boolean onSyncedBlockEvent(int type, int data) {
+        if (this.world != null && type == 1) {
+            this.state.start(this.age);
+            this.open = data != 0;
+            return true;
+        }
+        return super.onSyncedBlockEvent(type, data);
+    }
+
+    @Override
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.writeNbt(nbt, registryLookup);
+        nbt.putBoolean("open", this.isOpen());
+    }
+
+    @Override
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.readNbt(nbt, registryLookup);
+        this.setOpen(nbt.getBoolean("open"));
+    }
+}

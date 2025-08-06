@@ -1,0 +1,53 @@
+package dev.doctor4t.trainmurdermystery.block_entity;
+
+import dev.doctor4t.trainmurdermystery.block.DoorPartBlock;
+import dev.doctor4t.trainmurdermystery.block.SmallDoorBlock;
+import dev.doctor4t.trainmurdermystery.index.TrainMurderMysteryBlockEntities;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+
+public class SmallDoorBlockEntity extends DoorBlockEntity {
+
+    protected SmallDoorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
+    }
+
+    public static SmallDoorBlockEntity createGlass(BlockPos pos, BlockState state) {
+        return new SmallDoorBlockEntity(TrainMurderMysteryBlockEntities.SMALL_GLASS_DOOR, pos, state);
+    }
+
+    public static SmallDoorBlockEntity createWood(BlockPos pos, BlockState state) {
+        return new SmallDoorBlockEntity(TrainMurderMysteryBlockEntities.SMALL_WOOD_DOOR, pos, state);
+    }
+
+    @Override
+    protected void toggleBlocks() {
+        if (this.world == null) {
+            return;
+        }
+        this.world.setBlockState(this.pos, this.getCachedState().with(SmallDoorBlock.OPEN, this.open));
+        this.world.setBlockState(this.pos.up(), this.getCachedState()
+                .with(SmallDoorBlock.OPEN, this.open)
+                .with(SmallDoorBlock.HALF, DoubleBlockHalf.UPPER)
+        );
+    }
+
+    @Override
+    protected void toggleOpen() {
+        super.toggleOpen();
+        if (this.world == null) {
+            return;
+        }
+        Direction facing = this.getFacing();
+        BlockPos neighborPos = this.getPos().offset(facing.rotateYCounterclockwise());
+        BlockState neighborState = this.world.getBlockState(neighborPos);
+        if (neighborState.isOf(this.getCachedState().getBlock())
+                && neighborState.get(DoorPartBlock.FACING).getOpposite() == facing
+                && this.world.getBlockEntity(neighborPos) instanceof SmallDoorBlockEntity neighborEntity) {
+            neighborEntity.toggle(true);
+        }
+    }
+}

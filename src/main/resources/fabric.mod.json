@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "trainmurdermystery",
+	"version": "${version}",
+	"name": "TrainMurderMystery",
+	"description": "Library for doctor4t's mods and supporter cosmetics",
+	"authors": [
+		"doctor4t"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/trainmurdermystery",
+		"sources": "https://github.com/doctor4t/TrainMurderMystery"
+	},
+	"license": "ARR",
+	"icon": "assets/trainmurdermystery/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.doctor4t.trainmurdermystery.TrainMurderMystery"
+		],
+		"client": [
+			"dev.doctor4t.trainmurdermystery.client.TrainMurderMysteryClient"
+		],
+		"fabric-datagen": [
+			"dev.doctor4t.trainmurdermystery.datagen.TrainMurderMysteryDatagen"
+		]
+	},
+	"mixins": [
+		"trainmurdermystery.mixins.json"
+	],
+	"accessWidener" : "trainmurdermystery.accesswidener",
+	"depends": {
+		"fabricloader": "*",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
