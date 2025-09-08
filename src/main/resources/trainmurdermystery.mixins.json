@@ -11,6 +11,7 @@
     "client.BackgroundRendererMixin",
     "client.BipedEntityModelMixin",
     "client.CameraMixin",
+    "client.ChatHudMixin",
     "client.ClientWorldMixin",
     "client.PlayerEntityRendererMixin",
     "client.WorldRendererMixin"

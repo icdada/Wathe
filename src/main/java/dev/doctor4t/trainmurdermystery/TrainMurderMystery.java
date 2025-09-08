@@ -32,4 +32,21 @@ public class TrainMurderMystery implements ModInitializer {
         }));
 
     }
+
+// TODO: Disable chat & death messages
+// TODO: Disable off-hand
+// TODO: Simplify opened inventory
+// TODO: Add roles
+// TODO: Add objectives
+// TODO: Add tasks
+// TODO: Add temp jamming doors with lockpick
+// TODO: Add ledge block
+// TODO: Remove survival UI
+// TODO: Remove sprint
+// TODO: Disable debug
+// TODO: Lock brightness option
+// TODO: Add snack cabinet
+// TODO: Add drink cabinet
+// TODO: Make beds poisonable
+// TODO: Make cabinets poisonable
 }
