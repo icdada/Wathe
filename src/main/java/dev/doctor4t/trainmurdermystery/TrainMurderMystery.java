@@ -24,6 +24,7 @@ public class TrainMurderMystery implements ModInitializer {
     @Override
     public void onInitialize() {
         // Registry initializers
+        TMMDataComponentTypes.initialize();
         TrainMurderMysterySounds.initialize();
         TrainMurderMysteryEntities.initialize();
         TrainMurderMysteryBlocks.initialize();
@@ -55,3 +56,4 @@ public class TrainMurderMystery implements ModInitializer {
 // TODO: Nicer starting phase + UI
 // TODO: Add letter item
 // TODO: System that remembers previous roles and allows cycling of roles
+// TODO: Fix locked option bug + lock audio

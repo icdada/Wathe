@@ -26,6 +26,9 @@ public interface TrainMurderMysterySounds {
     SoundEvent ITEM_LOCKPICK_DOOR = registrar.create("item.lockpick.door");
     SoundEvent ITEM_KNIFE_PREPARE = registrar.create("item.knife.prepare");
     SoundEvent ITEM_KNIFE_STAB = registrar.create("item.knife.stab");
+    SoundEvent ITEM_REVOLVER_CLICK = registrar.create("item.revolver.click");
+    SoundEvent ITEM_REVOLVER_SHOOT = registrar.create("item.revolver.shoot");
+    SoundEvent ITEM_REVOLVER_SPIN = registrar.create("item.revolver.spin");
 
     // Ambience
     SoundEvent AMBIENT_TRAIN_INSIDE = registrar.create("ambient.train.inside");

@@ -46,7 +46,6 @@ public class KnifeItem extends Item {
                 killedPlayer.playSound(TrainMurderMysterySounds.ITEM_KNIFE_STAB, 1.0f, 1.0f);
                 if (!attacker.isCreative()) attacker.getItemCooldownManager().set(this, GameConstants.KNIFE_COOLDOWN);
             }
-
         }
     }
 
