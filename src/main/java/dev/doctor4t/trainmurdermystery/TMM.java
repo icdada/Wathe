@@ -121,6 +121,7 @@ public class TMM implements ModInitializer {
 
 // Various tweaks who don't need to be recorded
 // TODO: Fix spectators being shot by guns (Amy)
+// TODO: Prevent item drops from inside inventory
 
 // TORECORD: Polish
 // TODO: Train chimney smoke + ringable horn, triggers game start in lobby and end of game
