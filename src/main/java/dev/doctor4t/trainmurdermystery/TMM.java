@@ -105,7 +105,7 @@ public class TMM implements ModInitializer {
 // TODO: - Gun with one bullet (allows the hitman to potentially pass as a detective / passenger with a gun on top of giving a ranged option)
 // TODO: - Psycho mode (wanted to have an anonymous killer originally for the horror element, this also allows the hitman to go crazy how some wanted to)
 // TODO: - Light turn off item + true darkness (increases the horror aspect + amazing scenario of lights turning off and someone being dead when they turn back on)
-// TODO: - Crowbar (perma opening a door should be a hitman ability, allows for creative kills where you can push off players from train doors, as well as allowing passengers to use the exterior in order to give plausible deniability to hitmen using it to relocate)
+// TORECORD: - Crowbar (perma opening a door should be a hitman ability, allows for creative kills where you can push off players from train doors, as well as allowing passengers to use the exterior in order to give plausible deniability to hitmen using it to relocate)
 // TODO: - Firecracker (luring people, shooting the gun in spectator often led to people rushing in from curiosity, allowing the hitman to manipulate players)
 // TODO: - Note (allows the hitman to leave messages, fun for encouraging the roleplay aspect)
 

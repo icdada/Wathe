@@ -294,5 +294,11 @@
 			"trainmurdermystery:ambient/train_outside"
 		],
 		"subtitle": "subtitles.ambient.train.outside"
+	},
+	"item.crowbar.pry": {
+		"sounds": [
+			"trainmurdermystery:item/crowbar_pry"
+		],
+		"subtitle": "subtitles.item.crowbar.pry"
 	}
 }
