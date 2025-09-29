@@ -18,6 +18,7 @@ import dev.doctor4t.trainmurdermystery.client.render.block_entity.PlateBlockEnti
 import dev.doctor4t.trainmurdermystery.client.render.block_entity.SmallDoorBlockEntityRenderer;
 import dev.doctor4t.trainmurdermystery.client.render.block_entity.WheelBlockEntityRenderer;
 import dev.doctor4t.trainmurdermystery.client.render.entity.FirecrackerEntityRenderer;
+import dev.doctor4t.trainmurdermystery.client.render.entity.HornBlockEntityRenderer;
 import dev.doctor4t.trainmurdermystery.client.render.entity.NoteEntityRenderer;
 import dev.doctor4t.trainmurdermystery.client.util.TMMItemTooltips;
 import dev.doctor4t.trainmurdermystery.entity.FirecrackerEntity;
@@ -131,7 +132,8 @@ public class TMMClient implements ClientModInitializer {
                 TMMBlocks.BARRIER_PANEL,
                 TMMBlocks.FOOD_PLATTER,
                 TMMBlocks.DRINK_TRAY,
-                TMMBlocks.LIGHT_BARRIER
+                TMMBlocks.LIGHT_BARRIER,
+                TMMBlocks.HORN
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
                 TMMBlocks.RHOMBUS_GLASS,
@@ -167,6 +169,7 @@ public class TMMClient implements ClientModInitializer {
                 TMMBlockEntities.BEVERAGE_PLATE,
                 PlateBlockEntityRenderer::new
         );
+        BlockEntityRendererFactories.register(TMMBlockEntities.HORN, HornBlockEntityRenderer::new);
 
         // Ambience
         AmbienceUtil.registerBackgroundAmbience(new BackgroundAmbience(TMMSounds.AMBIENT_TRAIN_INSIDE, player -> isTrainMoving() && !TMM.isSkyVisibleAdjacent(player), 20));

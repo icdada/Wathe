@@ -2,6 +2,7 @@ package dev.doctor4t.trainmurdermystery.index;
 
 import dev.doctor4t.ratatouille.util.registrar.BlockEntityTypeRegistrar;
 import dev.doctor4t.trainmurdermystery.TMM;
+import dev.doctor4t.trainmurdermystery.block.entity.HornBlockEntity;
 import dev.doctor4t.trainmurdermystery.block_entity.*;
 import net.minecraft.block.entity.BlockEntityType;
 
@@ -15,6 +16,7 @@ public interface TMMBlockEntities {
     BlockEntityType<WheelBlockEntity> WHEEL = registrar.create("wheel", BlockEntityType.Builder.create(WheelBlockEntity::create, TMMBlocks.WHEEL));
     BlockEntityType<BeveragePlateBlockEntity> BEVERAGE_PLATE = registrar.create("beverage_plate", BlockEntityType.Builder.create(BeveragePlateBlockEntity::new, TMMBlocks.FOOD_PLATTER, TMMBlocks.DRINK_TRAY));
     BlockEntityType<TrimmedBedBlockEntity> TRIMMED_BED = registrar.create("trimmed_bed", BlockEntityType.Builder.create(TrimmedBedBlockEntity::create, TMMBlocks.RED_TRIMMED_BED, TMMBlocks.WHITE_TRIMMED_BED));
+    BlockEntityType<HornBlockEntity> HORN = registrar.create("horn", BlockEntityType.Builder.create(HornBlockEntity::new, TMMBlocks.HORN));
 
     static void initialize() {
         registrar.registerEntries();

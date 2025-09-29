@@ -202,6 +202,7 @@ public interface TMMBlocks {
     Block BAR_STOOL = registrar.createWithItem("bar_stool", new BarStoolBlock(AbstractBlock.Settings.copy(WHITE_LOUNGE_COUCH)), TMMItems.DECORATION_GROUP);
     Block WHITE_TRIMMED_BED = registrar.createWithItem("white_trimmed_bed", new TrimmedBedBlock(AbstractBlock.Settings.copy(WHITE_LOUNGE_COUCH)), TMMItems.DECORATION_GROUP);
     Block RED_TRIMMED_BED = registrar.createWithItem("red_trimmed_bed", new TrimmedBedBlock(AbstractBlock.Settings.copy(WHITE_LOUNGE_COUCH)), TMMItems.DECORATION_GROUP);
+    Block HORN = registrar.createWithItem("horn", new HornBlock(AbstractBlock.Settings.copy(Blocks.CHAIN).nonOpaque().noCollision()), TMMItems.DECORATION_GROUP);
 
     // Lamps
     Block TRIMMED_LANTERN = registrar.createWithItem("trimmed_lantern", new TrimmedLanternBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque().luminance(createLightLevelFromLitPoweredBlockState(15)).sounds(BlockSoundGroup.LANTERN)), TMMItems.DECORATION_GROUP);

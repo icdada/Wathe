@@ -125,7 +125,7 @@ public class TMM implements ModInitializer {
 // TORECORD: - Crowbar (perma opening a door should be a killer ability, allows for creative kills where you can push off players from train doors, as well as allowing passengers to use the exterior in order to give plausible deniability to killers using it to relocate)
 // TORECORD: - Psycho mode (wanted to have an anonymous killer originally for the horror element, this also allows the killer to go crazy how some wanted to)
 //              Ambience can be heard by all players, so you know when to run. Also gives a use to rooms as you can hide in them
-//              TODO: Psycho mode can shrug off one bullet, cause too easy to counter otherwise
+//              Psycho mode can shrug off one bullet, cause too easy to counter otherwise
 // TORECORD: - Light turn off item + true darkness (increases the horror aspect + amazing scenario of lights turning off and someone being dead when they turn back on + blackout and psycho mode)
 //              True darkness doesn't work that well because of skylight seeping into the block, add a light barrier block that blocks it from entering
 //              Disable name renderer for the duration of the blackout to prevent people seeing in the dark
@@ -151,11 +151,11 @@ public class TMM implements ModInitializer {
 // done: Rearrange the train cars to prevent all POIs being separated by all the sleeping cars
 
 // TORECORD: Polish
-// TODO: Train chimney smoke + ringable horn, triggers game start in lobby and end of game
+// TODO: Train chimney smoke
+// TODO: Ringable horn, triggers game start in lobby and end of game
 // TORECORD: Players collide with each other (Amy) + let's you step on them
 // TORECORD: System that remembers previous roles and allows cycling of roles (Amy)
 
-// TODO: Fix poison visual not getting removed + prevent poisoning if already poisoned
 // TODO: add command to reset role weighting
 // TODO: fix name and note render over each other if your cursor sees both
 // TODO: small video tutorial on how to play
