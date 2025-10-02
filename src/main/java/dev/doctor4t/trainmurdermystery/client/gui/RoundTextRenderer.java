@@ -1,5 +1,6 @@
 package dev.doctor4t.trainmurdermystery.client.gui;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import dev.doctor4t.trainmurdermystery.cca.PlayerEndInfoComponent;
 import dev.doctor4t.trainmurdermystery.cca.TMMComponents;
 import dev.doctor4t.trainmurdermystery.game.GameFunctions;
@@ -102,6 +103,7 @@ public class RoundTextRenderer {
                 }
                 var texture = entry.getSkinTextures();
                 if (texture != null) {
+                    RenderSystem.enableBlend();
                     context.drawTexture(texture.texture(), 8, 0, 8, 8, 8, 8, 8, 8, 64, 64);
                     context.drawTexture(texture.texture(), 8, 0, 8, 8, 40, 8, 8, 8, 64, 64);
                 }
@@ -109,7 +111,7 @@ public class RoundTextRenderer {
                     context.fill(8, 0, 16, 8, 0x80880000);
                     context.getMatrices().translate(13, 0, 0);
                     context.getMatrices().scale(2f, 1f, 1f);
-                    context.drawText(renderer, "x", -renderer.getWidth("x") / 2, 0, 0xFF6060, false);
+                    context.drawText(renderer, "x", -renderer.getWidth("x") / 2, 0, 0xBB1010, false);
                     context.drawText(renderer, "x", -renderer.getWidth("x") / 2, 1, 0x201010, false);
                 }
                 context.getMatrices().pop();
