@@ -44,8 +44,8 @@ public class TrainMurderMysteryLangGen extends FabricLanguageProvider {
         builder.add("announcement.title.killer", "Killers");
 
         builder.add("announcement.welcome", "Welcome aboard %s");
-        builder.add("announcement.premise", "There are %s killers aboard the train.");
-        builder.add("announcement.premises", "There is a killer aboard the train.");
+        builder.add("announcement.premise", "There is a killer aboard the train.");
+        builder.add("announcement.premises", "There are %s killers aboard the train.");
         builder.add("announcement.goal.civilian", "Stay safe and survive till the end of the ride.");
         builder.add("announcement.goal.vigilante", "Eliminate any murderers and protect the civilians.");
         builder.add("announcement.goal.killer", "Eliminate a passenger to succeed, before time runs out.");
