@@ -104,8 +104,13 @@ public class RoundTextRenderer {
                 var texture = entry.getSkinTextures();
                 if (texture != null) {
                     RenderSystem.enableBlend();
-                    context.drawTexture(texture.texture(), 8, 0, 8, 8, 8, 8, 8, 8, 64, 64);
-                    context.drawTexture(texture.texture(), 8, 0, 8, 8, 40, 8, 8, 8, 64, 64);
+                    context.getMatrices().push();
+                    context.getMatrices().translate(8, 0, 0);
+                    context.drawTexture(texture.texture(), 0, 0, 8, 8, 8, 8, 8, 8, 64, 64);
+                    context.getMatrices().translate(-0.5, -0.5, 0);
+                    context.getMatrices().scale(1.125f, 1.125f, 1f);
+                    context.drawTexture(texture.texture(), 0, 0, 8, 8, 40, 8, 8, 8, 64, 64);
+                    context.getMatrices().pop();
                 }
                 if (endInfo.wasDead) {
                     context.fill(8, 0, 16, 8, 0x80880000);
