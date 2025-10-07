@@ -32,6 +32,10 @@ public class KnifeItem extends Item {
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        if (user.isSpectator()) {
+            return;
+        }
+
         if (remainingUseTicks >= this.getMaxUseTime(stack, user) - 10 || !(user instanceof PlayerEntity attacker) || !world.isClient)
             return;
         var collision = getKnifeTarget(attacker);
