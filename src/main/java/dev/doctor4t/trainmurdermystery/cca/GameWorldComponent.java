@@ -51,6 +51,8 @@ public class GameWorldComponent implements AutoSyncedComponent, ClientTickingCom
         }
     }
 
+    private boolean bound = true;
+
     private GameStatus gameStatus = GameStatus.INACTIVE;
     private int fade = 0;
 
@@ -70,6 +72,15 @@ public class GameWorldComponent implements AutoSyncedComponent, ClientTickingCom
 
     public void sync() {
         GameWorldComponent.KEY.sync(this.world);
+    }
+
+    public boolean isBound() {
+        return bound;
+    }
+
+    public void setBound(boolean bound) {
+        this.bound = bound;
+        this.sync();
     }
 
     public int getFade() {
@@ -273,7 +284,7 @@ public class GameWorldComponent implements AutoSyncedComponent, ClientTickingCom
             // spectator limits
             if (trainComponent.getTrainSpeed() > 0) {
                 for (ServerPlayerEntity player : serverWorld.getPlayers()) {
-                    if (!GameFunctions.isPlayerAliveAndSurvival(player)) {
+                    if (!GameFunctions.isPlayerAliveAndSurvival(player) && isBound()) {
                         GameFunctions.limitPlayerToBox(player, GameConstants.PLAY_AREA);
                     }
                 }
