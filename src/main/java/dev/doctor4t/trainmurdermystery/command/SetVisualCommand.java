@@ -25,7 +25,7 @@ public class SetVisualCommand {
                                 .executes(context -> execute(context.getSource(), TrainWorldComponent::setScreenshake, BoolArgumentType.getBool(context, "enabled")))))
                 .then(CommandManager.literal("hud")
                         .then(CommandManager.argument("enabled", BoolArgumentType.bool())
-                                .executes(context -> execute(context.getSource(), TrainWorldComponent::setScreenshake, BoolArgumentType.getBool(context, "enabled")))))
+                                .executes(context -> execute(context.getSource(), TrainWorldComponent::setHud, BoolArgumentType.getBool(context, "enabled")))))
                 .then(CommandManager.literal("trainSpeed")
                         .then(CommandManager.argument("speed", IntegerArgumentType.integer(0))
                                 .executes(context -> execute(context.getSource(), TrainWorldComponent::setSpeed, IntegerArgumentType.getInteger(context, "speed")))))
