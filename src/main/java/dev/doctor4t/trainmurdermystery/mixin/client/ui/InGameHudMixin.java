@@ -38,7 +38,7 @@ public class InGameHudMixin {
 
     @Inject(method = "renderMainHud", at = @At("TAIL"))
     private void tmm$renderHud(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
-        if (TMMClient.trainComponent.hasHud()) {
+        if (TMMClient.trainComponent != null && TMMClient.trainComponent.hasHud()) {
             var player = this.client.player;
             if (player == null) return;
             var renderer = MinecraftClient.getInstance().textRenderer;
