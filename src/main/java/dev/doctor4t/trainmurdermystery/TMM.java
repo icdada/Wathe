@@ -86,9 +86,14 @@ public class TMM implements ModInitializer {
             server.getPlayerManager().broadcast(
                     message.getContent(),
                     player -> {
-                        boolean bypass = GameFunctions.isPlayerSpectatingOrCreative(sender) || GameFunctions.isPlayerSpectatingOrCreative(player);
+                        boolean senderSpectatorOrCreative = GameFunctions.isPlayerSpectatingOrCreative(sender);
+                        boolean receiverSpectatorOrCreative = GameFunctions.isPlayerSpectatingOrCreative(player);
 
-                        if (bypass || isWithinRange(sender, player, range)) {
+                        if (senderSpectatorOrCreative && !receiverSpectatorOrCreative) {
+                            return null;
+                        }
+
+                        if (receiverSpectatorOrCreative || isWithinRange(sender, player, range)) {
                             return Text.translatable(
                                     "chat.type.text",
                                     sender.getDisplayName(),
