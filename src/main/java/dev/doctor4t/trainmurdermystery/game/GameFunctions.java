@@ -303,8 +303,10 @@ public class GameFunctions {
             return;
         }
 
-        if (killer != null && GameWorldComponent.KEY.get(killer.getWorld()).canUseKillerFeatures(killer)) {
-            PlayerShopComponent.KEY.get(killer).addToBalance(GameConstants.MONEY_PER_KILL);
+        if (killer != null) {
+            if (GameWorldComponent.KEY.get(killer.getWorld()).canUseKillerFeatures(killer)) {
+                PlayerShopComponent.KEY.get(killer).addToBalance(GameConstants.MONEY_PER_KILL);
+            }
 
             // replenish derringer
             for (List<ItemStack> list : killer.getInventory().combinedInventory) {
