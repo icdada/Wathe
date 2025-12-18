@@ -12,6 +12,7 @@ Wathe 1.3 - 1.21.1
   - /wathe:start now requires a map effect identifier to start the game
   - For instance, /wathe:start wathe:murder wathe:harpy_express_day allows you to play the murder mystery game mode
     during the day
+  - Added a generic simple map effect that can be used by custom non-train maps
 - Added a /wathe:mapVariables command that allows changing variables for custom maps:
   - spawnPos: The spawn position and orientation players will be reset to once the game ends.
   - spectatorSpawnPos: The spawn position and orientation players will be set to when set as spectators at the start of a game.
@@ -23,6 +24,7 @@ Wathe 1.3 - 1.21.1
 - Moved weights, bounds, auto-start and backfire commands to a new /wathe:gameSettings command
 - Added a new role dividend setting to /wathe:gameSettings that allows setting custom killer and vigilante counts
 - Lowered the default dividend for both killers and vigilantes to 5 instead of 6
+- Players can now sleep at any time of the day
 - Fixed double doors not jamming together
 - Fixed Derringers not replenishing on kill
 - Fixed Revolvers being able to be double fired

@@ -7,9 +7,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import dev.doctor4t.wathe.api.GameMode;
 import dev.doctor4t.wathe.api.MapEffect;
-import dev.doctor4t.wathe.api.WatheGameModes;
 import dev.doctor4t.wathe.api.WatheMapEffects;
 import net.minecraft.command.CommandSource;
 import net.minecraft.server.command.ServerCommandSource;
@@ -22,7 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MapEffectArgumentType implements ArgumentType<Identifier> {
-    private static final Collection<String> EXAMPLES = Stream.of(WatheMapEffects.HARPY_EXPRESS_NIGHT, WatheMapEffects.HARPY_EXPRESS_DAY, WatheMapEffects.HARPY_EXPRESS_SUNDOWN)
+    private static final Collection<String> EXAMPLES = Stream.of(WatheMapEffects.GENERIC, WatheMapEffects.HARPY_EXPRESS_NIGHT)
             .map(key -> key.identifier.toString())
             .collect(Collectors.toList());
     private static final DynamicCommandExceptionType INVALID_GAME_MODE_EXCEPTION = new DynamicCommandExceptionType(
