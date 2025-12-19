@@ -3,6 +3,7 @@ Wathe 1.3.1 - 1.21.1
 ------------------------------------------------------
 - Fixed map effect not initializing when being manually changed with the mapVariables command
 - Fixed time of day not properly changing with map effects other than the default Harpy Express ones
+- Changed the default map effect to the generic one
 
 ------------------------------------------------------
 Wathe 1.3 - 1.21.1
