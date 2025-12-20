@@ -1,4 +1,4 @@
-package dev.doctor4t.trainmurdermystery.mixin;
+package dev.doctor4t.wathe.mixin;
 
 import net.minecraft.server.PlayerManager;
 import net.minecraft.text.Text;

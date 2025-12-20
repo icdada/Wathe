@@ -1,4 +1,4 @@
-package dev.doctor4t.trainmurdermystery.mixin;
+package dev.doctor4t.wathe.mixin;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.server.command.MeCommand;
