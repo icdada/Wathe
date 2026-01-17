@@ -36,7 +36,10 @@ public record GunShootPayload(int target) implements CustomPayload {
         @Override
         public void receive(@NotNull GunShootPayload payload, ServerPlayNetworking.@NotNull Context context) {
             ServerPlayerEntity player = context.player();
-            ItemStack mainHandStack = player.getMainHandStack();
+            ItemStack Stack = player.getMainHandStack();
+            ItemStack offHandStack = player.getOffHandStack();
+            // 优先主手，主手无枪械则用副手
+            ItemStack mainHandStack = Stack.isIn(WatheItemTags.GUNS) ? Stack : offHandStack;
             if (!mainHandStack.isIn(WatheItemTags.GUNS)) return;
             if (player.getItemCooldownManager().isCoolingDown(mainHandStack.getItem())) return;
 

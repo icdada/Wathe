@@ -42,6 +42,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.UUID;
 
+
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
@@ -56,7 +57,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         super(entityType, world);
     }
 
-
+    // ✅ 速度完全不变！保留你原版的数值：冲刺0.1f，行走0.07f，杀手和普通玩家速度一模一样
     @ModifyReturnValue(method = "getMovementSpeed", at = @At("RETURN"))
     public float wathe$overrideMovementSpeed(float original) {
         if (GameFunctions.isPlayerAliveAndSurvival((PlayerEntity) (Object) this)) {
@@ -66,11 +67,26 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
+    // ✅ 核心修改：杀手无限冲刺 + 杀手开局满体力 + 普通玩家原限制不变
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void wathe$limitSprint(CallbackInfo ci) {
-        GameWorldComponent gameComponent = GameWorldComponent.KEY.get(this.getWorld());
-        if (GameFunctions.isPlayerAliveAndSurvival((PlayerEntity) (Object) this) && gameComponent != null && gameComponent.isRunning()) {
-            Role role = gameComponent.getRole((PlayerEntity) (Object) this);
+        PlayerEntity playerSelf = (PlayerEntity) (Object) this;
+        GameWorldComponent gameComponent = GameWorldComponent.KEY.get(playerSelf.getWorld());
+
+        if (!gameComponent.isRunning()) return;
+
+        /* ===== 服务端判断：是否是杀手 ===== */
+        Role role = gameComponent.getRole(playerSelf);
+        if (role != null && role.canUseKiller()) {
+            // 杀手无限体力
+            if (role.getMaxSprintTime() >= 0) {
+                sprintingTicks = role.getMaxSprintTime();
+            }
+            return;   // 跳过后面普通玩家逻辑
+        }
+
+        // ========== 普通玩家原逻辑 完全保留 无任何改动 ==========
+        if (GameFunctions.isPlayerAliveAndSurvival(playerSelf) && gameComponent.isRunning()) {
             if (role != null && role.getMaxSprintTime() >= 0) {
                 if (this.isSprinting()) {
                     sprintingTicks = Math.max(sprintingTicks - 1, 0);
@@ -158,7 +174,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
     private void wathe$readData(NbtCompound nbt, CallbackInfo ci) {
-        this.sprintingTicks = nbt.getFloat("sprintingTicks");
+        sprintingTicks = nbt.getFloat("sprintingTicks");
     }
 
     @ModifyExpressionValue(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;isDay()Z"))

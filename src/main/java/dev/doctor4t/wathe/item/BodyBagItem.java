@@ -25,7 +25,7 @@ public class BodyBagItem extends Item {
             }
             if (!user.isCreative()) {
                 user.getStackInHand(hand).decrement(1);
-                user.getItemCooldownManager().set(this, GameConstants.ITEM_COOLDOWNS.get(this));
+                user.getItemCooldownManager().set(this, 0);
             }
 
             return ActionResult.SUCCESS;

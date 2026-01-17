@@ -23,6 +23,7 @@ import dev.doctor4t.wathe.client.render.entity.NoteEntityRenderer;
 import dev.doctor4t.wathe.client.util.WatheItemTooltips;
 import dev.doctor4t.wathe.entity.FirecrackerEntity;
 import dev.doctor4t.wathe.entity.NoteEntity;
+import dev.doctor4t.wathe.entity.PlayerBodyEntity;
 import dev.doctor4t.wathe.game.GameConstants;
 import dev.doctor4t.wathe.game.GameFunctions;
 import dev.doctor4t.wathe.index.*;
@@ -359,8 +360,8 @@ public class WatheClient implements ClientModInitializer {
 
     public static int getInstinctHighlight(Entity target) {
         if (!isInstinctEnabled()) return -1;
-//        if (target instanceof PlayerBodyEntity) return 0x606060;
-        if (target instanceof ItemEntity || target instanceof NoteEntity || target instanceof FirecrackerEntity)
+        if (target instanceof PlayerBodyEntity) return 0x606060;
+        if (target instanceof ItemEntity || target instanceof NoteEntity || target instanceof FirecrackerEntity )
             return 0xDB9D00;
         if (target instanceof PlayerEntity player) {
             if (GameFunctions.isPlayerSpectatingOrCreative(player)) return -1;

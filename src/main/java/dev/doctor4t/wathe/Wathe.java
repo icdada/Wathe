@@ -132,16 +132,8 @@ public class Wathe implements ModInitializer {
     public static final Identifier COMMAND_ACCESS = id("commandaccess");
 
     public static int executeSupporterCommand(ServerCommandSource source, Runnable runnable) {
-        ServerPlayerEntity player = source.getPlayer();
-        if (player == null || !player.getClass().equals(ServerPlayerEntity.class)) return 0;
-
-        if (isSupporter(player) || FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            runnable.run();
+          runnable.run();
             return 1;
-        } else {
-            player.sendMessage(Text.translatable("commands.supporter_only"));
-            return 0;
-        }
     }
 
     public static @NotNull Boolean isSupporter(PlayerEntity player) {
